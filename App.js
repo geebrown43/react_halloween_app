@@ -9,7 +9,9 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Button,
+  Alert
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -19,19 +21,20 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component<{}> {
+export default class App extends Component {
+  _pressureButton() {
+    Alert.alert('HAPPPPPY HALLLOWWEEEENN')
+  }
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Happy Halloween!
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <View style={styles.buttonContainer}>
+          <Button style={styles.buttonStyle} onPress={this._pressureButton} title="Enter if You Dare" />
+        </View>
+        
       </View>
     );
   }
@@ -46,16 +49,22 @@ const styles = StyleSheet.create({
   },
   welcome: {
     marginTop: -200,
-    fontSize: 30,
+    fontSize: 40,
     textAlign: 'center',
     margin: 10,
     fontFamily: 'Nosifer', 
     color: 'orange'
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-    fontFamily: 'Times New Roman'
+  buttonContainer: {
+    margin: 40,
+    width: 200,
+    backgroundColor: 'orange',
+    borderStyle: 'solid',
+    borderRadius: 20,
+    
   },
+  buttonStyle: {
+    color: 'orange'
+  }
+  
 });
